@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interview</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>
+          <a href="/">My Ecommerce Site</a>
+
+          <span class="pull-right">
+            <a>Cart {{ "(" + cartProducts.length + ")" }}</a>
+          </span>
+        </h1>
+        <hr />
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">MY CART (1)</div>
+            <div class="panel-body">
+              <form>
+                <div
+                  class="row"
+                  *ngFor="let product of cartProducts; let i = index"
+                >
+                  <div class="col-md-3">
+                    <img
+                      [src]="baseURL + '/' + product.image"
+                      width="100px"
+                      height="200px"
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    {{ product.name }} <br /><i class="fa fa-inr"></i
+                    >{{ product.price }}
+                  </div>
+                  <div class="col-md-3">
+                    quantity
+                    <br />
+                    <button
+                      (click)="decrement(i)"
+                      class="qtyminus"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <input
+                      ng-model="qty"
+                      type="text"
+                      name="quantity"
+                      class="qty"
+                      size="5px"
+                      [value]="quantity[i]"
+                    />
+                    <button type="button" (click)="increment(i)">+</button>
+                  </div>
+                  <div class="col-md-3">
+                    <a class="btn btn-warning" (click)="removeProduct(i)"
+                      >remove</a
+                    >
+                  </div>
+                </div>
+              </form>
+              <hr />
+              <div class="row">
+                <div class="col-md-9">
+                  <label class="pull-right">Amount Payable </label>
+                </div>
+                <div class="col-md-3">{{ totalAmount }}</div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <a routerLink="/home" class="btn btn-success"
+                >Continue Shopping</a
+              >
+              <a
+                class="pull-right btn btn-danger"
+                routerLink="/place-order"
+                (click)="addQuantity()"
+                >Place Order</a
+              >
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+  </body>
+</html>
