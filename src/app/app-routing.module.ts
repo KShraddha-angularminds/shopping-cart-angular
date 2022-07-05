@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
+import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'place-order',
     component: PlaceOrderComponent,
+  },
+  {
+    path: 'success/:id',
+    component: SuccessComponent,
   },
 ];
 

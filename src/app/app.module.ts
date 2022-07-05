@@ -8,15 +8,28 @@ import { CartComponent } from './cart/cart.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SuccessComponent } from './success/success.component';
+import {
+  JwPaginationComponent,
+  JwPaginationModule,
+} from 'jw-angular-pagination';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CartComponent,
     PlaceOrderComponent,
+    SuccessComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwPaginationModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

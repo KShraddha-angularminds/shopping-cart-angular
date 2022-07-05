@@ -24,7 +24,12 @@
           <div class="panel panel-default">
             <div class="panel-heading">Place Order</div>
             <div class="panel-body">
-              <form class="form-horizontal" role="form">
+              <form
+                class="form-horizontal"
+                [formGroup]="placeOrder"
+                role="form"
+                (ngSubmit)="submitOrder()"
+              >
                 <table class="table table-striped">
                   <thead class="table-head">
                     <tr>
@@ -64,6 +69,7 @@
                     >Enter Order Details</label
                   >
                 </div>
+
                 <div class="form-group">
                   <label for="inputName3" class="col-sm-2 control-label"
                     >Name</label
@@ -73,7 +79,16 @@
                       class="form-control"
                       id="inputName3"
                       placeholder="Name"
+                      formControlName="personName"
+                      [class.is-invalid]="
+                        personName.invalid && personName.touched
+                      "
                     />
+                    <span
+                      class="text-danger"
+                      *ngIf="personName.invalid && personName.touched"
+                      >person name is required</span
+                    >
                   </div>
                 </div>
                 <div class="form-group">
@@ -85,13 +100,25 @@
                       class="form-control"
                       id="inputEmail3"
                       placeholder="Deliver Address"
+                      formControlName="deliveryAddress"
+                      [class.is-invalid]="
+                        deliveryAddress.required && deliveryAddress.touched
+                      "
                     ></textarea>
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        deliveryAddress.required && deliveryAddress.touched
+                      "
+                    >
+                      Address is required</span
+                    >
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label"></label>
                   <div class="col-sm-6">
-                    <a href="" class="btn btn-warning">Confirm Order</a>
+                    <button type="submit">Confirm Order</button>
                   </div>
                 </div>
               </form>
